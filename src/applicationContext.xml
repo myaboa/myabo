@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:p = "http://www.springframework.org/schema/p"
+       xmlns:context = "http://www.springframework.org/schema/context"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+                            http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd">
+
+    <!--注入bean属性的前提是设置bean-->
+    <!--通过set方式进行属性注入-->
+    <bean id="student" class="com.abo.pojo.Student">
+        <property name="name" value="abo"></property> <!--id属性可以替换name属性 id是之前适配struts 现在主要使用name属性 -->
+        <property name="age" value="19"></property>   <!--name是实体类的字短名 value是给该属性进行赋予的值-->
+        <property name="address" value="beijing"></property>
+    </bean>
+
+    <!--构造器方式注入属性-->
+    <bean id="student" class="com.abo.pojo.Student">
+        <constructor-arg name="name" value="doudou"></constructor-arg> <!--name属性也可通过index属性进行替换  此种是通过索引进行赋值-->
+        <constructor-arg name="age" value="22"></constructor-arg>
+        <constructor-arg name="address" value="xian"></constructor-arg>
+    </bean>
+
+    <context:component-scan base-package="com.abo"></context:component-scan>
+
+    <!--p名称空间方式属性注入-->
+    <bean id="student" class="com.abo.pojo.Student" p:name="徐博">
+    </bean>
+</beans>
